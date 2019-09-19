@@ -1,22 +1,42 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: null }
-    firewalls:
+        in_database:
+            entity:
+                class: App\Entity\User
+                property: email
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls: # permet de définir les composants qui vont permettre d'authentifier l'utilisateur
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            anonymous: ~
+            pattern:    ^/
+            http_basic: ~
+            user_checker:
+            provider: in_database
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+            form_login:
+               login_path: app_login
+               check_path: app_login
+               csrf_token_generator: security.csrf.token_manager
+               default_target_path: user_account
+            logout:
+               path: app_logout
+               target: app_login
+            switch_user: ~
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
