@@ -15,12 +15,17 @@
         "symfony/orm-pack": "^1.0",
         "symfony/profiler-pack": "^1.0",
         "symfony/security-bundle": "4.3.*",
+        "symfony/swiftmailer-bundle": "^3.2",
         "symfony/twig-bundle": "4.3.*",
-        "symfony/web-server-bundle": "^4.3",
+        "symfony/validator": "4.3.*",
+        "symfony/web-server-bundle": "4.3.*",
         "symfony/yaml": "4.3.*",
         "twig/twig": "^2.11"
     },
     "require-dev": {
+        "hautelook/alice-bundle": "^2.5",
+        "symfony/maker-bundle": "^1.13",
+        "symfony/profiler-pack": "^1.0"
     },
     "config": {
         "preferred-install": {

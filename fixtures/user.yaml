@@ -1,0 +1,10 @@
+App\Entity\User:
+  user-{1}:
+    email: <email()>
+    roles: ['ROLE_USER']
+    password: <country()>
+   
+
+
+  
+    
