@@ -1,0 +1,75 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: user
+#------------------------------------------------------------
+
+CREATE TABLE user(
+        id             Int  Auto_increment  NOT NULL ,
+        firstname      Varchar (50) NOT NULL ,
+        lastname       Varchar (50) NOT NULL ,
+        password       Varchar (50) NOT NULL ,
+        birthday       Date NOT NULL ,
+        address        Char (255) NOT NULL ,
+        phone_number   Int NOT NULL ,
+        license_number Int NOT NULL ,
+        roles longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(roles)),
+	PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: category
+#------------------------------------------------------------
+
+CREATE TABLE category(
+        id   Int  Auto_increment  NOT NULL ,
+        type Varchar (255) NOT NULL
+	,CONSTRAINT category_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: vehicle
+#------------------------------------------------------------
+
+CREATE TABLE vehicle(
+        id            Int  Auto_increment  NOT NULL ,
+        brand         Varchar (255) NOT NULL ,
+        model         Varchar (255) NOT NULL ,
+        serial_number Int NOT NULL ,
+        colour        Varchar (255) NOT NULL ,
+        license_plate Varchar (255) NOT NULL ,
+        mileage       Int NOT NULL ,
+        purchase_date Date NOT NULL ,
+        rental_price  Int NOT NULL ,
+        available     Bool NOT NULL ,
+        id_category   Int NOT NULL
+	,CONSTRAINT vehicle_PK PRIMARY KEY (id)
+
+	,CONSTRAINT vehicle_category_FK FOREIGN KEY (id_category) REFERENCES category(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: rent
+#------------------------------------------------------------
+
+CREATE TABLE rent(
+        id         Int  Auto_increment  NOT NULL ,
+        start_date Date NOT NULL ,
+        end_date   Date NOT NULL ,
+        price      Int NOT NULL ,
+        duration   Int NOT NULL ,
+        mileage    Int NOT NULL ,
+        id_user    Int NOT NULL ,
+        id_vehicle Int NOT NULL
+	,CONSTRAINT rent_PK PRIMARY KEY (id)
+
+	,CONSTRAINT rent_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
+	,CONSTRAINT rent_vehicle0_FK FOREIGN KEY (id_vehicle) REFERENCES vehicle(id)
+)ENGINE=InnoDB;
+
