@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container dark-modal">
+        {% if isOk %}
+            <div class="alert alert-dismissible alert-success">
+                <h2>Le véhicule a été ajoutée</h2>
+            </div>
+        {% endif %}
+        <br>
+        <h2 style="text-align: center">Ajout d'un véhicule</h2>
+        <div class="px-4 py-3">
+            {{ form_start(vehicleInscriptionForm) }}
+            {{ form_row(vehicleInscriptionForm.brand, {
+                'label': "Marque",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+            {{ form_row(vehicleInscriptionForm.model, {
+                'label': "Modèle",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+            {{ form_row(vehicleInscriptionForm.serial_number, {
+                'label': "Numéro de série",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+            {{ form_row(vehicleInscriptionForm.colour, {
+                'label': "Couleur",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+            {{ form_row(vehicleInscriptionForm.license_plate, {
+                'label': "Plaque d'immatriculation",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+            {{ form_row(vehicleInscriptionForm.mileage, {
+                'label': "Kilométrage",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+
+            {{ form_row(vehicleInscriptionForm.purchase_date, {
+                'label': "Date d'achat",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+
+            {{ form_row(vehicleInscriptionForm.rental_price, {
+                'label': "Prix de location",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+
+            {{ form_row(vehicleInscriptionForm.daily_price, {
+                'label': "Prix de la journée de location",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+
+            {{ form_rest(vehicleInscriptionForm) }}
+            <br>
+            <hr>
+            <div class="row justify-content-md-center">
+                <button type="submit" class="btn btn-lg btn-primary">Ajouter un véhicule</button>
+                {{ form_end(vehicleInscriptionForm) }}
+            </div>
+
+        </div>
+    </div>
+ {% endblock %}

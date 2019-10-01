@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RentController!{% endblock %}
+
+{% block body %}
+<div class="container dark-modal">
+        {% if isOk %}
+            <div class="alert alert-dismissible alert-success">
+                <h2>Votre véhicule a bien été réservée</h2>
+            </div>
+        {% endif %}
+        <br>
+        <h2 style="text-align: center">Location</h2>
+        <div class="px-4 py-3">
+            {{ form_start(rentForm) }}
+            {{ form_row(rentForm.start_date, {
+                'label': "date de début",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+
+            {{ form_row(rentForm.end_date, {
+                'label': "date de fin",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+
+            {{ form_rest(rentForm) }}
+            <br>
+            <hr>
+            <div class="row justify-content-md-center">
+                <button type="submit" class="btn btn-lg btn-primary">Réserver votre véhicule</button>
+                {{ form_end(rentForm) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

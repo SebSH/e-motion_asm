@@ -66,6 +66,11 @@ class Vehicle
      */
     private $id_category;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $daily_price;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -187,6 +192,18 @@ class Vehicle
     public function setIdCategory(int $id_category): self
     {
         $this->id_category = $id_category;
+
+        return $this;
+    }
+
+    public function getDailyPrice(): ?int
+    {
+        return $this->daily_price;
+    }
+
+    public function setDailyPrice(int $daily_price): self
+    {
+        $this->daily_price = $daily_price;
 
         return $this;
     }

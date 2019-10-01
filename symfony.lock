@@ -1,4 +1,10 @@
 {
+    "components/bootstrap": {
+        "version": "3.4.1"
+    },
+    "components/jquery": {
+        "version": "3.3.1"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -84,6 +90,9 @@
     "egulias/email-validator": {
         "version": "2.1.11"
     },
+    "eternicode/bootstrap-datepicker": {
+        "version": "v1.9.0"
+    },
     "fzaninotto/faker": {
         "version": "v1.8.0"
     },
@@ -103,6 +112,9 @@
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "kriswallsmith/assetic": {
+        "version": "v1.0.5"
     },
     "myclabs/deep-copy": {
         "version": "1.9.3"
@@ -138,6 +150,9 @@
     "psr/log": {
         "version": "1.1.0"
     },
+    "robloach/component-installer": {
+        "version": "0.2.3"
+    },
     "sebastian/comparator": {
         "version": "3.0.2"
     },
@@ -152,6 +167,9 @@
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
+    },
+    "symfony/asset": {
+        "version": "v4.3.4"
     },
     "symfony/cache": {
         "version": "v4.3.4"
@@ -407,6 +425,24 @@
             "version": "3.3",
             "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
         }
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "d3b160b9799c91cbfc3df6f018c795f3bf88698a"
+        },
+        "files": [
+            "./assets/css/app.css",
+            "./assets/js/app.js",
+            "./config/packages/assets.yaml",
+            "./config/packages/prod/webpack_encore.yaml",
+            "./config/packages/webpack_encore.yaml",
+            "./package.json",
+            "./webpack.config.js"
+        ]
     },
     "symfony/yaml": {
         "version": "v4.3.4"
