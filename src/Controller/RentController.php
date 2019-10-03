@@ -27,6 +27,7 @@ class RentController extends AbstractController
         
         $newRentForm = $this->createForm(RentType::class);
         $newRentForm->handleRequest($request);
+
         if ($newRentForm->isSubmitted() && $newRentForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $newRent = new Rent();

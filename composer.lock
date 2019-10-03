@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f90fd6f44949199071f6845b6d0e191",
+    "content-hash": "c053a8b5fe78193a64892eea4c14a335",
     "packages": [
         {
             "name": "components/bootstrap",
