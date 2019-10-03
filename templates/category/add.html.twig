@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+<div class="container dark-modal">
+        {% if isOk %}
+            <div class="alert alert-dismissible alert-success">
+                <h2>Une catégorie a été ajoutée</h2>
+            </div>
+        {% endif %}
+        <br>
+        <h2 style="text-align: center">Nouvelle catégorie</h2>
+        <div class="px-4 py-3">
+            {{ form_start(categoryInscriptionForm) }}
+            {{ form_row(categoryInscriptionForm.type, {
+                'label': "catégorie",
+                'attr': {
+                    class: "form-control"
+                }
+            }) }}
+
+            {{ form_rest(categoryInscriptionForm) }}
+            <br>
+            <hr>
+            <div class="row justify-content-md-center">
+                <button type="submit" class="btn btn-lg btn-primary">Ajouter une catégorie</button>
+                {{ form_end(categoryInscriptionForm) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

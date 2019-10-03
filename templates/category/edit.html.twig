@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if isOk %}
+        <h1>La conférence a bien été modifiée</h1>
+    {% else %}
+        {{ form_start(categoryForm) }}
+        {{ form_rest(categoryForm) }}
+        <button type="submit">Modifier la catégorie</button>
+        {{ form_end(categoryForm) }}
+    {% endif %}
+{% endblock %}

@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CategoryRepository;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * Category
+ *
+ * @ORM\Table(name="category")
+ * @ORM\Entity
  */
 class Category
 {

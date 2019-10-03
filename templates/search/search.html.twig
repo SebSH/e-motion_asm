@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Liste des véhicules</h2>
+   <table>
+        <thead>
+        <tr>
+            <th>Marque</th>
+            <th>Modèle</th>
+            <th>Couleur</th>
+            <th>Prix de location</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        {% for vehicle in vehicles %}
+        <tr>
+            <td>{{ vehicle.brand }}</td>
+            <td>{{ vehicle.model }}</td>
+            <td>{{ vehicle.colour}}</td>
+            {# <td>{{ vehicle.note}}/5</td> #}
+            <td><a href="{{ path('rent_add', {id: vehicle.id}) }}">Réserver</a></td>
+           
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
