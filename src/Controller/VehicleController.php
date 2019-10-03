@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 use App\Entity\Vehicle;
 use App\Form\VehicleType;
@@ -41,3 +40,4 @@ class VehicleController extends AbstractController
         ]);
     }
 }
+
