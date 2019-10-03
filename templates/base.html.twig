@@ -4,25 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}e-motion{% endblock %}</title>
+
     {% block stylesheets %}
-        <link href="{{ asset('public/css/main.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     {% endblock %}
+
 </head>
 <body>
-    <div id="logo">
-
+    <div id="header">
+        <div id="logo">
+            <img src="{{ asset('img/Logo.svg') }}" id="Logo">
+        </div>
+        <div id="title">
+            <h1>e-motion</h1>
+            <h2>make a green world again</h2>
+        </div>
+        <div id="sidebar">
+            {% block sidebar %}
+                    <a href="/">Home</a>
+                    <a href="/vehicle">vehicle</a>
+                    <a href="/command">my command</a>
+            {% endblock %}
+        </div>
     </div>
-<div id="sidebar">
-    {% block sidebar %}
-            <button><a href="/">Home</a></button>
-            <button><a href="/vehicle">vehicle</a></button>
-            <button><a href="/command">my command</a></button>
-    {% endblock %}
-</div>
 
-<div id="content">
-    {% block body %}{% endblock %}
-</div>
+    {% block body %}
+    {% endblock %}
+
+    <div id="footer">
+        <a href="/mention">Mention Légales</a>
+        <a href="/rgpd">Données personnelles</a>
+    </div>
 </body>
 </html>
 
