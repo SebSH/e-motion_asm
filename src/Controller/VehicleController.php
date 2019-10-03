@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class VehicleController extends AbstractController
 {
     /**
-     * @Route("/add", name="add")
+     * @Route("/add", name="_add")
      */
     public function add(Request $request): Response
     {

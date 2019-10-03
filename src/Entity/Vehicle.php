@@ -71,6 +71,11 @@ class Vehicle
      */
     private $daily_price;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $city;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -204,6 +209,18 @@ class Vehicle
     public function setDailyPrice(int $daily_price): self
     {
         $this->daily_price = $daily_price;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

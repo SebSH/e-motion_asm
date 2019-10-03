@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/add", name="add")
+     * @Route("/add", name="_add")
      */
     public function add(Request $request): Response
     {
@@ -43,7 +43,7 @@ class CategoryController extends AbstractController
     /**
      * @param Request $request
      * @param Category $category
-     * @Route(path="/edit/{id}", name="edit")
+     * @Route(path="/edit/{id}", name="_edit")
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -67,7 +67,7 @@ class CategoryController extends AbstractController
     /**
      * @param Category $category
      * @return Response
-     * @Route(path="/delete/{id}", name="delete")
+     * @Route(path="/delete/{id}", name="_delete")
      */
      public function delete(Category $category): Response
      {
@@ -78,7 +78,7 @@ class CategoryController extends AbstractController
      }
 
     /**
-    * @Route(path="/list" ,name="list")
+    * @Route(path="/list" ,name="_list")
     */
     public function list(Request $request): Response
     {

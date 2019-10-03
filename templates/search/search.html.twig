@@ -19,7 +19,7 @@
             <td>{{ vehicle.model }}</td>
             <td>{{ vehicle.colour}}</td>
             {# <td>{{ vehicle.note}}/5</td> #}
-            {# <td><a href="{{ path('vote_add', {id: vehicle.id}) }}">Noter</a></td> #}
+            <td><a href="{{ path('rent_add', {id: vehicle.id}) }}">Réserver</a></td>
            
         </tr>
         {% endfor %}

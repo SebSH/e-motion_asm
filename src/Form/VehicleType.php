@@ -27,13 +27,13 @@ class VehicleType extends AbstractType
             ->add('rental_price')
             ->add('daily_price')
             // ->add('available')
-             ->add('id_category', EntityType::class, array(
-                 'class' => Category::class,
-                 'choice_label' => 'type',
-                 'choice_value' => function (Category $category) {
-                     return $category->getId();
-                 }
-             ))
+            //  ->add('id_category', EntityType::class, array(
+            //      'class' => Category::class,
+            //      'choice_label' => 'type',
+            //      'choice_value' => function (Category $category) {
+            //          return $category->getId();
+            //      }
+            //  ))
         ;
     }
 

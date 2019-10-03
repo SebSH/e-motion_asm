@@ -19,6 +19,17 @@ class RentRepository extends ServiceEntityRepository
         parent::__construct($registry, Rent::class);
     }
 
+    public function addDuration()
+    {
+        $rawSql = "select datediff(end_date, start_date) from rent 
+                   where id = (select Max(id) from rent)";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
+        $stmt->execute([]);
+
+        return $stmt->fetchAll();
+    }
+
     // /**
     //  * @return Rent[] Returns an array of Rent objects
     //  */

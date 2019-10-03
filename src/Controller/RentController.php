@@ -30,20 +30,23 @@ class RentController extends AbstractController
         if ($newRentForm->isSubmitted() && $newRentForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $newRent = new Rent();
+            $repository = $this->getDoctrine()->getRepository(Rent::class);
             $id = $request->get("id");
             $rent = $request->request->get("Rent");
             $startDate = $rent["start_date"];
             $endDate = $rent["end_date"];
+            $duration = $repository->addDuration();
             $this->denyAccessUnlessGranted('ROLE_USER');
             $user = $this->getUser()->getId();
             $newRent->setIdVehicle($id);
             $newRent->setStartDate($startDate);
             $newRent->setEndDate($endDate);
+            $newRent->setDuration($duration);
             $newRent->setIdUser($user);
             $em->persist($newRent);
             $em->flush();
             $isOk = true;
-            return $this->redirectToRoute('meeting_list');
+            return $this->redirectToRoute('test');
         }
         return $this->render(
             'rent/add.html.twig',
