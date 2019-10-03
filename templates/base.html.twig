@@ -1,26 +1,28 @@
 <!DOCTYPE>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>e-Motion!</title>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" >
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-        
 
-        {% block stylesheets %}
-            
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}e-motion{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{ asset('public/css/main.css') }}" rel="stylesheet" />
+    {% endblock %}
+</head>
+<body>
+    <div id="logo">
 
-            <link rel="stylesheet"
-                  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-                  crossorigin="anonymous">
-        {% endblock %}
-    </head>
-    <body style="z-index: -2000;">
-        <div class="r-wrapper">
+    </div>
+<div id="sidebar">
+    {% block sidebar %}
+            <button><a href="/">Home</a></button>
+            <button><a href="/vehicle">vehicle</a></button>
+            <button><a href="/command">my command</a></button>
+    {% endblock %}
+</div>
 
-            {% block body %}{% endblock %}
-
-        </div>
-    </body>
+<div id="content">
+    {% block body %}{% endblock %}
+</div>
+</body>
 </html>
+
