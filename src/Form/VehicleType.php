@@ -49,6 +49,7 @@ class VehicleType extends AbstractType
                 'required' => false,
                 'label' => 'date d\'achate du vehicle',
                 'years' => range(2016, 2019)
+
             ])
             ->add('rental_price', null, [
                 'required' => true,
@@ -78,3 +79,4 @@ class VehicleType extends AbstractType
         ]);
     }
 }
+
