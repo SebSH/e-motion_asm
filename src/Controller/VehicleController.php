@@ -30,6 +30,8 @@ class VehicleController extends AbstractController
             $vehicle->setPurchaseDate(new \DateTime());
             $em->persist($vehicle);
             $em->flush();
+
+
             $isOk = true;
         }
         return $this->render('vehicle/add.html.twig', [

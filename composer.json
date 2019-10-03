@@ -5,16 +5,24 @@
         "php": "^7.1.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "eternicode/bootstrap-datepicker": "^1.9",
+
         "symfony/config": "4.3.*",
+
+        "symfony/asset": "4.3.*",
+
         "symfony/console": "4.3.*",
         "symfony/dependency-injection": "4.3.*",
         "symfony/dotenv": "4.3.*",
         "symfony/flex": "^1.3.1",
         "symfony/form": "4.3.*",
         "symfony/framework-bundle": "4.3.*",
+<<<<<<< HEAD
         "symfony/http-foundation": "4.3.*",
+=======
+        "symfony/maker-bundle": "^1.13",
+>>>>>>> 13858fc356ed9619bd7d972308a69f7914361efd
         "symfony/orm-pack": "^1.0",
+        "symfony/profiler-pack": "^1.0",
         "symfony/security-bundle": "4.3.*",
         "symfony/swiftmailer-bundle": "^3.2",
         "symfony/twig-bundle": "4.3.*",
