@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserAccountController!{% endblock %}
+
+{% block body %}
+<h2> Bienvenue sur votre espace membre</h2>
+
+
+
+    <div class="btn-group-vertical" data-toggle="buttons">
+        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('meeting_add') }}'">Ajouter une conférence</button>
+        
+
+        
+
+        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('meeting_list') }}'">Voir tout</button>
+        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('meeting_top') }}'">TOP 10 </button>
+
+    </div>
+
+
+{% endblock %}

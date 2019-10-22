@@ -22,10 +22,9 @@ class SearchController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Vehicle::class);
         $vehicles = $repository->findByVehicule();
             
-        dump($request->request->all());
         return $this->render('search/search.html.twig', [
             'vehicles' => $vehicles,
-            'start_date'=> 1,
+            
         ]);
     }
 }

@@ -3,11 +3,11 @@
 {% block title %}Hello RentController!{% endblock %}
 
 {% block body %}
-<form name="date" method="post" action="RentController.php">
+<form name="date" method="post" action="">
 <p>
     <input type="date" name="start_date"/>
     <input type="date" name="end_date"/>
-    <a href="{{ path('website_index') }}">
+    <a href="{{ path('search') }}">
     <input type="button" value="Reserver"/>
     </a>
 </p>

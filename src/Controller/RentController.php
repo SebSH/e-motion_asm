@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\Rent;
 use App\Form\RentType;
 use App\Entity\User;
@@ -12,7 +11,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-
 /**
  * @Route("/rent", name="rent")
 */
@@ -27,15 +25,14 @@ class RentController extends AbstractController
         
         $newRentForm = $this->createForm(RentType::class);
         $newRentForm->handleRequest($request);
-
-        if ($newRentForm->isSubmitted() && $newRentForm->isValid()) {
+        if (isset($_POST["start_date"]) && isset($_POST["end_date"])) {
             $em = $this->getDoctrine()->getManager();
             $newRent = new Rent();
             // $repository = $this->getDoctrine()->getRepository(Rent::class);
             $id = $request->get("id");
-            $rent = $request->request->get("Rent");
-            $startDate = $rent["start_date"];
-            $endDate = $rent["end_date"];
+            $rent = $request->request->get("rent");
+            $startDate = $_POST["start_date"];
+            $endDate = $_POST["end_date"];
             // $duration = $repository->addDuration();
             // $duration = implode($duration);
             // $duration = intval($duration);
@@ -45,17 +42,13 @@ class RentController extends AbstractController
             $newRent->setStartDate(new \DateTime($startDate));
             $newRent->setEndDate(new \DateTime($endDate));            
             $newRent->setIdUser($user);
+            var_dump($_POST['start_date']);
+            exit;
             $em->persist($newRent);
             $em->flush();
             $isOk = true;
-            return $this->redirectToRoute('search');
+            return $this->redirectToRoute('website_index');
         }
-        return $this->render(
-            'rent/add.html.twig',
-            [
-            'rentForm' => $newRentForm->createView(),
-            'isOk' => $isOk,
-            ]
-        );
+        
     }
 }
