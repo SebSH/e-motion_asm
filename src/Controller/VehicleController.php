@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 namespace App\Controller;
 use App\Entity\Vehicle;
 use App\Form\VehicleType;
@@ -26,6 +28,7 @@ class VehicleController extends AbstractController
         
             $em = $this->getDoctrine()->getManager();
             $vehicle = $newVehicleForm->getData();
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
             $vehicle->setAvailable(1);
             $vehicle->setPurchaseDate(new \DateTime());
             $em->persist($vehicle);

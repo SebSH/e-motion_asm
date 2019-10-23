@@ -13,15 +13,11 @@
             </tr>
             <tr>
                 <th>Mail</th>
-                <td>{{ user.mail }}</td>
+                <td>{{ user.email }}</td>
             </tr>
             <tr>
                 <th>Roles</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
             </tr>
             <tr>
                 <th>Firstname</th>
@@ -30,10 +26,6 @@
             <tr>
                 <th>Lastname</th>
                 <td>{{ user.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Statut</th>
-                <td>{{ user.statut ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
     </table>

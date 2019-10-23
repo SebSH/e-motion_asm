@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Entity\Rent;
 use App\Form\RentType;
+use App\Repository\RentRepository;
 use App\Entity\User;
 use App\Entity\Vehicle;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -50,5 +51,15 @@ class RentController extends AbstractController
             return $this->redirectToRoute('website_index');
         }
         
+    }
+
+    /**
+     * @Route("/list", name="_list")
+     */
+    public function list(RentRepository $rentRepository): Response
+    {
+        return $this->render('rent/list.html.twig', [
+            'rents' => $rentRepository->findAll(),
+        ]);
     }
 }
