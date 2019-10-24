@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class VehicleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -27,6 +28,11 @@ class VehicleType extends AbstractType
                 'required' => true,
                 'label' => 'colour'
             ])
+            ->add('city', ChoiceType::class, [
+                'choices'  => [
+                    'Paris' => 'Paris',
+                    'Lyon' => 'Lyon',
+                ]])
             ->add('serial_number', TelType::class, [
                 'required' => true,
                 'label' => 'Numéro de serie*'
@@ -70,7 +76,12 @@ class VehicleType extends AbstractType
                         'max' => 2
                     ])
                 ]
-            ]);
+            ])
+            ->add('id_category', ChoiceType::class, [
+                'choices'  => [
+                    'Voiture' => 1,
+                    'Scooter' => 2,
+                ]]);
     }
     public function configureOptions(OptionsResolver $resolver)
     {

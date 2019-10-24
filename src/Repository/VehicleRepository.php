@@ -28,6 +28,32 @@ class VehicleRepository extends ServiceEntityRepository
         ->getResult();
     }
 
+    public function findCar()
+    {
+        return $this->createQueryBuilder('c')
+        ->where('c.id_category = 1')
+        ->orderBy('c.id', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function findScooter()
+    {
+        return $this->createQueryBuilder('c')
+        ->where('c.id_category = 2')
+        ->orderBy('c.id', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
+
+
+    public function getRentalPrice($id)
+    {
+        $query = $this->_em->createQuery('SELECT rental_price FROM vehicle WHERE id = :id');
+        $query->setParameter('id', $id);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Vehicle[] Returns an array of Vehicle objects
     //  */

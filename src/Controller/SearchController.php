@@ -17,13 +17,14 @@ class SearchController extends AbstractController
     /**
      * @Route("/search", name="search")
      */
-    public function index()
+    public function index(Request $request)
     {
         $repository = $this->getDoctrine()->getRepository(Vehicle::class);
         $vehicles = $repository->findByVehicule();
-
+            
         return $this->render('search/search.html.twig', [
             'vehicles' => $vehicles,
+            
         ]);
     }
 }

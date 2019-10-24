@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserAccountController!{% endblock %}
+
+{% block body %}
+<h2> Bienvenue sur votre espace membre</h2>
+
+
+
+    <div class="btn-group-vertical" data-toggle="buttons">
+        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('user_edit', {id: user.id}) }}'">Modifier son profil</button>
+        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('search') }}'">Louer un véhicule</button>
+        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('rent_list') }}'">Historique des locations</button>
+
+    </div>
+
+
+{% endblock %}

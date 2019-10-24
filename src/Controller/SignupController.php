@@ -41,6 +41,7 @@ class SignupController extends AbstractController
             //     return $this->redirectToRoute('wait_view', []);
             // }
             $isOk = true;
+            return $this->redirectToRoute('website_index');
         }
         return $this->render('signup/registration.html.twig', [
             'userInscriptionForm' => $newUserForm->createView(),

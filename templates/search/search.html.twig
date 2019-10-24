@@ -2,6 +2,7 @@
 
 {% block body %}
     <h2>Liste des véhicules</h2>
+    <input type="hidden" name="">
    <table>
         <thead>
         <tr>
@@ -18,7 +19,7 @@
             <td>{{ vehicle.brand }}</td>
             <td>{{ vehicle.model }}</td>
             <td>{{ vehicle.colour}}</td>
-            {# <td>{{ vehicle.note}}/5</td> #}
+            <td>{{ vehicle.dailyprice}}€/jour</td>
             <td><a href="{{ path('rent_add', {id: vehicle.id}) }}">Réserver</a></td>
            
         </tr>

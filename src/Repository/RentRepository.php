@@ -30,6 +30,16 @@ class RentRepository extends ServiceEntityRepository
         return $stmt->fetchAll();
     }
 
+    public function findByUser(int $id)
+    {
+        return $this->createQueryBuilder('c')
+        ->where('c.id_user = ?1')
+        ->orderBy('c.id', 'ASC')
+        ->setParameter(1,$id)
+        ->getQuery()
+        ->getResult();
+    }
+
     // /**
     //  * @return Rent[] Returns an array of Rent objects
     //  */

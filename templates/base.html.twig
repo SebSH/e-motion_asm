@@ -6,6 +6,10 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet"
+                 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                 crossorigin="anonymous">
     {% endblock %}
 
 </head>
@@ -21,8 +25,17 @@
         <div id="sidebar">
             {% block sidebar %}
                     <a href="/">Home</a>
-                    <a href="/vehicle">vehicle</a>
                     <a href="/command">my command</a>
+                {% if is_granted('ROLE_USER') %}
+                    <a class="nav-link" href="{{ path('account') }}">Mon espace membre</a>
+                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>           
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="nav-link" href="{{ path('user_admin') }}">Admin</a>
+                    <a href="/vehicle">Add new vehicle</a>  
+                {% endif %}
+                
             {% endblock %}
         </div>
     </div>
