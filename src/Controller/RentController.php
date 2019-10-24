@@ -29,12 +29,12 @@ class RentController extends AbstractController
         if (isset($_POST["start_date"]) && isset($_POST["end_date"])) {
             $em = $this->getDoctrine()->getManager();
             $newRent = new Rent();
-            // $repository = $this->getDoctrine()->getRepository(Rent::class);
+            // $rentRepositorysitory = $this->getDoctrine()->getRepository(Rent::class);
             $id = $request->get("id");
             $rent = $request->request->get("rent");
             $startDate = $_POST["start_date"];
             $endDate = $_POST["end_date"];
-            // $duration = $repository->addDuration();
+            // $duration = $rentRepositorysitory->addDuration();
             // $duration = implode($duration);
             // $duration = intval($duration);
             $this->denyAccessUnlessGranted('ROLE_USER');
@@ -58,8 +58,15 @@ class RentController extends AbstractController
      */
     public function list(RentRepository $rentRepository): Response
     {
+        $rentRepository = $this->getDoctrine()->getManager()
+        ->getRepository(Rent::class);
+        
+        $id = $this->getUser()->getId();
+        
+        $result = $rentRepository->findByUser($id);
+
         return $this->render('rent/list.html.twig', [
-            'rents' => $rentRepository->findAll(),
+            'rents' => $result,
         ]);
     }
 }
