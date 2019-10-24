@@ -12,15 +12,16 @@ class RentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $years = range(date('Y'), date('Y') + 1);
 
         $builder
             ->add('start_date', DateType::class, [
-                'years'        => $years,
+                'label'       => 'Date de début',
+                'format' => 'dd-MM-yyyy'
                 
             ])
             ->add('end_date', DateType::class, [
-                'years'        => $years,
+                'label'       => 'Date de fin',
+                'format' => 'dd-MM-yyyy'
                 
             ])
             // ->add('price')

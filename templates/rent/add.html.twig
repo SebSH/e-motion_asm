@@ -1,15 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RentController!{% endblock %}
-
 {% block body %}
-<form name="date" method="post" action="RentController.php">
-<p>
-    <input type="date" name="start_date"/>
-    <input type="date" name="end_date"/>
-    <a href="{{ path('website_index') }}">
-    <input type="button" value="Reserver"/>
-    </a>
-</p>
-</form>
+        {{ form_start(rentForm) }}
+        {{ form_rest(rentForm) }}
+        <button type="submit">Réserver</button>
+        {{ form_end(rentForm) }}
 {% endblock %}

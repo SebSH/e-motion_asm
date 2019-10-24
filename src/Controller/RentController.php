@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use \Datetime;
 /**
  * @Route("/rent", name="rent")
 */
@@ -26,30 +27,34 @@ class RentController extends AbstractController
         
         $newRentForm = $this->createForm(RentType::class);
         $newRentForm->handleRequest($request);
-        if (isset($_POST["start_date"]) && isset($_POST["end_date"])) {
+        if ($newRentForm->isSubmitted() && $newRentForm->isValid()) {
+            $date = $newRentForm->getData();
             $em = $this->getDoctrine()->getManager();
             $newRent = new Rent();
-            // $rentRepositorysitory = $this->getDoctrine()->getRepository(Rent::class);
             $id = $request->get("id");
             $rent = $request->request->get("rent");
-            $startDate = $_POST["start_date"];
-            $endDate = $_POST["end_date"];
-            // $duration = $rentRepositorysitory->addDuration();
-            // $duration = implode($duration);
-            // $duration = intval($duration);
             $this->denyAccessUnlessGranted('ROLE_USER');
             $user = $this->getUser()->getId();
+            $start = implode("-", $rent['start_date']);
+            $start_date = new DateTime( $start);
+            $end = implode("-", $rent['end_date']);
+            $end_date = new DateTime( $end);
             $newRent->setIdVehicle($id);
-            $newRent->setStartDate(new \DateTime($startDate));
-            $newRent->setEndDate(new \DateTime($endDate));            
+            $newRent->setStartDate($start_date);
+            $newRent->setEndDate($end_date);            
             $newRent->setIdUser($user);
-            var_dump($_POST['start_date']);
-            exit;
             $em->persist($newRent);
             $em->flush();
             $isOk = true;
             return $this->redirectToRoute('website_index');
         }
+
+        return $this->render(
+            'rent/add.html.twig',
+            [
+            'rentForm' => $newRentForm->createView(),
+            ]
+        );
         
     }
 
