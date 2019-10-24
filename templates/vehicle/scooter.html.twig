@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Voitures</h2>
+    <input type="hidden" name="">
+   <table>
+        <thead>
+        <tr>
+            <th>Marque</th>
+            <th>Modèle</th>
+            <th>Numéro de série</th>
+            <th>Couleur</th>
+            <th>Ville</th>
+            <th>Plaque d'immatriculation</th>
+            <th>Kilométrage</th>
+            <th>Date d'achat</th>
+            <th>Prix journalier</th>
+            <th>Prix de location</th>
+            <td>Disponibilité</td>
+            
+        </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+        <tr>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.serialnumber}}</td>
+            <td>{{ car.colour}}</td>
+            <td>{{ car.city}}</td>
+            <td>{{ car.licenseplate }}</td>
+            <td>{{ car.mileage }}kilomètres</td>
+            <td>{{ car.purchasedate|date("d/m/Y")}}</td>
+            <td>{{ car.dailyprice}}€</td>
+            <td>{{ car.rentalprice}}€</td>
+            {% if car.available == 1 %}
+            <td>Disponible</td>
+            {% endif %}
+            {% if car.available == 0 %}
+            <td>Indisponible</td>
+            {% endif %}
+            <td>
+            <a href="{{ path('vehicle_edit', {'id': car.id}) }}">Modifier</a>
+            <a href="{{ path('scooter_delete', {'id': car.id}) }}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
