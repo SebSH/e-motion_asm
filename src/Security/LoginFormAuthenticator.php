@@ -22,7 +22,6 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
     use TargetPathTrait;
-
     private $entityManager;
     private $urlGenerator;
     private $csrfTokenManager;
@@ -85,8 +84,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('test'));
-        
+        return new RedirectResponse($this->urlGenerator->generate('account'));
+
     }
 
     protected function getLoginUrl()

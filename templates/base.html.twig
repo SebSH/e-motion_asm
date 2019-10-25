@@ -6,15 +6,11 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-        <link rel="stylesheet"
-                 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-                 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-                 crossorigin="anonymous">
     {% endblock %}
 
 </head>
 <body>
-    <div id="header">
+    <div class="header">
         <div id="logo">
             <img src="{{ asset('img/Logo.svg') }}" id="Logo">
         </div>
@@ -22,30 +18,39 @@
             <h1>e-motion</h1>
             <h2>make a green world again</h2>
         </div>
+        {% if is_granted('ROLE_USER') %}
+        <div id="connection">
+            <a id="position_f_link" href="{{ path('account') }}">Mon espace membre</a>
+            <a id="position_s_link" href="{{ path('app_logout') }}">Déconnexion</a>
+        </div>
+        {% endif %}
+        {% if not app.user %}
+            <div id="connection">
+                <a href="/login" id="position_f_link">Login</a>
+                <a href="/signup" id="position_s_link">register</a>
+            </div>
+        {% endif %}
         <div id="sidebar">
             {% block sidebar %}
-                    <a href="/">Home</a>
-                    <a href="/command">my command</a>
-                {% if is_granted('ROLE_USER') %}
-                    <a class="nav-link" href="{{ path('account') }}">Mon espace membre</a>
-                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>           
-                {% endif %}
-
+                <a href="/">Home</a>
+                <a href="/search">vehicle</a>
+                <a href="/command">my command</a>
                 {% if is_granted('ROLE_ADMIN') %}
                     <a class="nav-link" href="{{ path('user_admin') }}">Admin</a>
-                    <a href="/vehicle">Add new vehicle</a>  
+                    <a href="/vehicle">Add new vehicle</a>
                 {% endif %}
                 
             {% endblock %}
         </div>
     </div>
 
-    {% block body %}
-    {% endblock %}
 
-    <div id="footer">
-        <a href="/mention">Mention Légales</a>
-        <a href="/rgpd">Données personnelles</a>
+        {% block body %}
+        {% endblock %}
+
+    <div class="footer">
+        <a href="#">legal mention</a>
+        <a href="#">personnal data</a>
     </div>
 </body>
 </html>

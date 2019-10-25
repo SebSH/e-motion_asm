@@ -30,7 +30,7 @@ class UserType extends AbstractType
                 'label' => 'Email*'
             ])
             ->add('birthday', DateType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Date de naissance',
                 'years' => range(1919,2019)
             ])
@@ -56,16 +56,16 @@ class UserType extends AbstractType
                 'type' => PasswordType:: class,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez saisir un mot de passe',
+                        'message' => 'You have to write an password',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit au moins contenir  {{ limit }} caractères',
+                        'minMessage' => 'Your password must contain  {{ limit }} character',
                         'max' => 4096,
                     ]),
                 ],
-                'first_options' => array('label' => 'Mot de passe*'),
-                'second_options' => array('label' => 'Confirmation du mot de passe*'),)
+                'first_options' => array('label' => 'Password* : '),
+                'second_options' => array('label' => 'Confirmation Password* : '),)
             );
     }
     public function configureOptions(OptionsResolver $resolver)

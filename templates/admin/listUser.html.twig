@@ -3,39 +3,37 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <div class="body">
+    <h2>User index</h2>
 
-    <table class="table">
+    <table class="table_admin">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Mail</th>
-                <th>Roles</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>actions</th>
+                <th class="table-cell_admin-user">Id</th>
+                <th class="table-cell_admin-user">Mail</th>
+                <th class="table-cell_admin-user">Roles</th>
+                <th class="table-cell_admin-user">Firstname</th>
+                <th class="table-cell_admin-user">Lastname</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.firstname }}</td>
-                <td>{{ user.lastname }}</td>
-                <td>
-                    <a href="{{ path('admin_user_detail', {'id': user.id}) }}">Afficher</a>
-                    <a href="{{ path('admin_user_delete', {'id': user.id}) }}">Supprimer</a>
-                </td>
+                <td class="table-cell_admin-user">{{ user.id }}</td>
+                <td class="table-cell_admin-user">{{ user.email }}</td>
+                <td class="table-cell_admin-user">{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td class="table-cell_admin-user">{{ user.firstname }}</td>
+                <td class="table-cell_admin-user">{{ user.lastname }}</td>
+                <td><button type="button" class="button admin_button_car" onclick="document.location.href=' {{ path('admin_user_detail', {'id': user.id}) }}'">detail</button></td>
+                <td><button type="button" class="button admin_button_car" onclick="document.location.href=' {{ path('admin_user_delete', {'id': user.id}) }}'">delete</button></td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td>no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('admin_user_new') }}">Create new</a>
+        <button type="button" class="button button_add" onclick="document.location.href=' {{ path('admin_user_new') }}'">Create new user</button>
+    </div>
 {% endblock %}

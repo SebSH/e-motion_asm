@@ -7,21 +7,26 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
 class RentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $years = range(date('Y'), date('Y') + 1);
 
         $builder
             ->add('start_date', DateType::class, [
-                'years'        => $years,
-                
+                'label'       => 'Date de début',
+                'format' => 'dd-MM-yyyy',
+                'years' => range(2019, 2019),
+                'months' => range(10, 11),
+
             ])
             ->add('end_date', DateType::class, [
-                'years'        => $years,
-                
+                'label'       => 'Date de fin',
+                'format' => 'dd-MM-yyyy',
+                'years' => range(2019, 2019),
+                'months' => range(10, 11),
+
+
             ])
             // ->add('price')
             // ->add('duration')

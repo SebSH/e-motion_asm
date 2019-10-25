@@ -22,30 +22,51 @@ class VehicleRepository extends ServiceEntityRepository
     public function findByVehicule()
     {
         return $this->createQueryBuilder('c')
-        ->where('c.available = 1')
-        ->orderBy('c.id', 'ASC')
-        ->getQuery()
-        ->getResult();
+            ->where('c.available = 1')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
     public function findCar()
     {
         return $this->createQueryBuilder('c')
-        ->where('c.id_category = 1')
-        ->orderBy('c.id', 'ASC')
-        ->getQuery()
-        ->getResult();
+            ->where('c.id_category = 1')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
     public function findScooter()
     {
         return $this->createQueryBuilder('c')
-        ->where('c.id_category = 2')
-        ->orderBy('c.id', 'ASC')
-        ->getQuery()
-        ->getResult();
+            ->where('c.id_category = 2')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
+    public function findDailyPrice(int $id)
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.daily_price')
+            ->where('c.id = ?1')
+            ->orderBy('c.id', 'ASC')
+            ->setParameter(1,$id)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findRentalPrice(int $id)
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.rental_price')
+            ->where('c.id = ?1')
+            ->orderBy('c.id', 'ASC')
+            ->setParameter(1,$id)
+            ->getQuery()
+            ->getResult();
+    }
 
     public function getRentalPrice($id)
     {
@@ -53,8 +74,7 @@ class VehicleRepository extends ServiceEntityRepository
         $query->setParameter('id', $id);
         return $query->getResult();
     }
-
-    // /**
+        // /**
     //  * @return Vehicle[] Returns an array of Vehicle objects
     //  */
     /*

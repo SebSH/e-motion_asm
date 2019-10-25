@@ -1,71 +1,71 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container dark-modal">
-        {% if isOk %}
-            <div class="alert alert-dismissible alert-success">
-                <h2>Votre compte a été créé</h2>
-            </div>
-        {% endif %}
-        <br>
-        <h2 style="text-align: center">SignUp</h2>
-        <div class="px-4 py-3">
-            {{ form_start(userInscriptionForm) }}
-            {{ form_row(userInscriptionForm.email, {
-                'label': "mail",
-                'attr': {
-                    class: "form-control"
-                }
-            }) }}
-            {{ form_row(userInscriptionForm.lastname, {
-                'label': "LastName",
-                'attr': {
-                    class: "form-control"
-                }
-            }) }}
-            {{ form_row(userInscriptionForm.firstname, {
-                'label': "firstName",
-                'attr': {
-                    class: "form-control"
-                }
-            }) }}
-            {{ form_row(userInscriptionForm.password, {
-                'label': "Password",
-                'attr': {
-                    class: "form-control"
-                }
-            }) }}
-            {{ form_row(userInscriptionForm.birthday, {
-                'label': "birthday",
-                'attr': {
-                    class: "form-control"
-                }
-            }) }}
-            {{ form_row(userInscriptionForm.address, {
-                'label': "address",
-                'attr': {
-                    class: "form-control"
-                }
-            }) }}
-
-        <div class="mt-3 form-row">
-            <div class="col">
-                {{ form_label(userInscriptionForm.phone_number) }}
-                {{ form_errors(userInscriptionForm.phone_number) }}
-                {{ form_widget(userInscriptionForm.phone_number, { 'attr': {'class': 'form-control'} }) }}
-                {{ form_help(userInscriptionForm.phone_number) }}
-            </div>
-
-            {{ form_rest(userInscriptionForm) }}
-            <br>
-            <hr>
-            <div class="row justify-content-md-center">
-                <button type="submit" class="btn btn-lg btn-primary">Creer l'utilisateur</button>
-                {{ form_end(userInscriptionForm) }}
-            </div>
-
+    <div class="body">
+    {% if isOk %}
+        <div class="alert alert-dismissible alert-success">
+            <h2>Votre compte a été créé</h2>
         </div>
+    {% endif %}
+    <br>
+    <h2>SignUp</h2>
+    <div class="form">
+        {{ form_start(userInscriptionForm) }}
+        {{ form_row(userInscriptionForm.lastname, {
+            'label': "last name : ",
+            'attr': {
+                class: "form-control form_field"
+            }
+        }) }}
+        {{ form_row(userInscriptionForm.firstname, {
+            'label': "first name : ",
+            'attr': {
+                class: "form-control form_field"
+            }
+        }) }}
+        {{ form_row(userInscriptionForm.email, {
+            'label': "mail : ",
+            'attr': {
+                class: "form-control form_field"
+            }
+        }) }}
+        {{ form_row(userInscriptionForm.password, {
+            'label': "password : ",
+            'attr': {
+                class: "form-control form_field"
+            }
+        }) }}
+        {{ form_row(userInscriptionForm.birthday, {
+            'label': "birthday : ",
+            'attr': {
+                class: "form-control "
+            }
+        }) }}
+        {{ form_row(userInscriptionForm.address, {
+            'label': "address : ",
+            'attr': {
+                class: "form-control form_field"
+            }
+        }) }}
+        {{ form_row(userInscriptionForm.phone_number, {
+            'label': "phone number : ",
+            'attr': {
+                class: "form-control form_field"
+            }
+        }) }}
+        {{ form_row(userInscriptionForm.license_number, {
+            'label': "license number : ",
+            'placeholder':"test",
+            'attr': {
+                class: "form-control form_field"
+            }
+        }) }}
     </div>
 
 
+    {{ form_rest(userInscriptionForm) }}
+
+    <button type="submit" class="button" id="register_button">Register</button>
+    {{ form_end(userInscriptionForm) }}
+    </div>
 {% endblock %}
