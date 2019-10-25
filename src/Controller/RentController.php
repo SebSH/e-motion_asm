@@ -6,6 +6,7 @@ use App\Form\RentType;
 use App\Repository\RentRepository;
 use App\Entity\User;
 use App\Entity\Vehicle;
+use App\Repository\VehicleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,7 +22,7 @@ class RentController extends AbstractController
     /**
      * @Route("/add", name="_add")
      */
-    public function add(Request $request): Response
+    public function add(Request $request, VehicleRepository $vehicleRepository): Response
     {
         $isOk = false;
         
@@ -39,14 +40,30 @@ class RentController extends AbstractController
             $start_date = new DateTime( $start);
             $end = implode("-", $rent['end_date']);
             $end_date = new DateTime( $end);
+            $interval = $start_date->diff($end_date)->format('%a');
+            $duration = intval($interval);
+            $temp_daily_price = $vehicleRepository->findDailyPrice($id);
+            foreach($temp_daily_price as $t){
+                $daily_price = $t;
+            }
+            $daily_price = implode($daily_price, " ");
+            $temp_rental_price = $vehicleRepository->findRentalPrice($id);
+            foreach($temp_rental_price as $t){
+                $rental_price = $t;
+            }
+            $rental_price  = implode($rental_price, " ");
+            $price = intval($rental_price + ($daily_price * $duration));
+
             $newRent->setIdVehicle($id);
             $newRent->setStartDate($start_date);
-            $newRent->setEndDate($end_date);            
+            $newRent->setEndDate($end_date);
+            $newRent->setDuration($duration);
+            $newRent->setPrice($price);            
             $newRent->setIdUser($user);
             $em->persist($newRent);
             $em->flush();
             $isOk = true;
-            return $this->redirectToRoute('website_index');
+            return $this->redirectToRoute('rent_list');
         }
 
         return $this->render(

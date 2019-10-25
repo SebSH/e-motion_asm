@@ -46,6 +46,28 @@ class VehicleRepository extends ServiceEntityRepository
         ->getResult();
     }
 
+    public function findDailyPrice(int $id)
+    {
+        return $this->createQueryBuilder('c')
+        ->select('c.daily_price')
+        ->where('c.id = ?1')
+        ->orderBy('c.id', 'ASC')
+        ->setParameter(1,$id)
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function findRentalPrice(int $id)
+    {
+        return $this->createQueryBuilder('c')
+        ->select('c.rental_price')
+        ->where('c.id = ?1')
+        ->orderBy('c.id', 'ASC')
+        ->setParameter(1,$id)
+        ->getQuery()
+        ->getResult();
+    }
+
 
     public function getRentalPrice($id)
     {

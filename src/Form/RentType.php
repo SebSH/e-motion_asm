@@ -16,12 +16,17 @@ class RentType extends AbstractType
         $builder
             ->add('start_date', DateType::class, [
                 'label'       => 'Date de début',
-                'format' => 'dd-MM-yyyy'
+                'format' => 'dd-MM-yyyy',
+                'years' => range(2019, 2019),
+                'months' => range(10, 11),
                 
             ])
             ->add('end_date', DateType::class, [
                 'label'       => 'Date de fin',
-                'format' => 'dd-MM-yyyy'
+                'format' => 'dd-MM-yyyy',
+                'years' => range(2019, 2019),
+                'months' => range(10, 11),
+                
                 
             ])
             // ->add('price')
