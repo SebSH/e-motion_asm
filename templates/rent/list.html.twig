@@ -1,32 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Historique des locations</h2>
-    <input type="hidden" name="">
-   <table>
-        <thead>
-        <tr>
-            <th>Début</th>
-            <th>Fin</th>
-            <th>Prix</th>
-            <th>Durée</th>
-            <th>Distance parcourue</th>
-            
-        </tr>
-        </thead>
-        <tbody>
-        {% for rent in rents %}
-        <tr>
-            <td>{{ rent.startdate|date("d/m/Y") }}</td>
-            <td>{{ rent.enddate|date("d/m/Y") }}</td>
-            <td>{{ rent.price}}€</td>
-            <td>{{ rent.duration}}jours</td>
-            <td>{{ rent.mileage}}kilomètres</td>
-            
-           
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="body">
+        <h2>Historique des locations</h2>
+        <input type="hidden" name="">
+       <table>
+            <thead>
+            <tr>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Prix</th>
+                <th>Durée</th>
+                <th>Distance parcourue</th>
 
+            </tr>
+            </thead>
+            <tbody>
+            {% for rent in rents %}
+            <tr>
+                <td>{{ rent.startdate|date("d/m/Y") }}</td>
+                <td>{{ rent.enddate|date("d/m/Y") }}</td>
+                <td>{{ rent.price}}€</td>
+                <td>{{ rent.duration}}jours</td>
+                <td>{{ rent.mileage}}kilomètres</td>
+
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

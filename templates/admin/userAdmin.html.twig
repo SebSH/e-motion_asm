@@ -3,14 +3,13 @@
 {% block title %}Gestion des utilisateurs!{% endblock %}
 
 {% block body %}
-
-    <div class="btn-group-vertical" data-toggle="buttons">
-        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('car') }}'">Liste des voitures</button>
-        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('scooter') }}'">Liste des scooters</button>
-        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('admin_user_list') }}'">Afficher tout les utilisateurs</button>
-        <button type="button" class="btn btn-primary" onclick="document.location.href=' {{ path('admin_user_new') }}'">Créer un utilisateur </button>
-
-    </div>
-
+        <div class="body_admin">
+        <ul>
+                <li class="list_admin"><button type="button" class="button admin_button" onclick="document.location.href=' {{ path('car') }}'">Liste des voitures</button></li>
+                <li class="list_admin"><button type="button" class="button admin_button" onclick="document.location.href=' {{ path('scooter') }}'">Liste des scooters</button></li>
+                <li class="list_admin"><button type="button" class="button admin_button" onclick="document.location.href=' {{ path('admin_user_list') }}'">Afficher tout les utilisateurs</button></li>
+                <li class="list_admin"><button type="button" class="button admin_button" onclick="document.location.href=' {{ path('admin_user_new') }}'">Créer un utilisateur </button></li>
+        </ul>
+        </div>
 
 {% endblock %}

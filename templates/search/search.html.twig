@@ -1,30 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="body">
     <h2>Liste des véhicules</h2>
     <input type="hidden" name="">
-   <table>
+   <table id="background_table">
         <thead>
         <tr>
-            <th>Marque</th>
-            <th>Modèle</th>
-            <th>Couleur</th>
-            <th>Prix de location</th>
+            <th class="table-cell">catalog</th>
+            <th class="table-cell">Brand</th>
+            <th class="table-cell">Model</th>
+            <th class="table-cell">Color</th>
+            <th class="table-cell">Daily price</th>
             
         </tr>
         </thead>
         <tbody>
         {% for vehicle in vehicles %}
         <tr>
-            <td>{{ vehicle.brand }}</td>
-            <td>{{ vehicle.model }}</td>
-            <td>{{ vehicle.colour}}</td>
-            <td>{{ vehicle.dailyprice}}€/jour</td>
-            <td><a href="{{ path('rent_add', {id: vehicle.id}) }}">Réserver</a></td>
-           
+            <td class="table-cell"><img id="catalog_img" src="{{ asset('img/catalog_img.jpg') }}"></td>
+            <td class="table-cell text-cell">{{ vehicle.brand }}</td>
+            <td class="table-cell text-cell">{{ vehicle.model }}</td>
+            <td class="table-cell text-cell">{{ vehicle.colour}}</td>
+            <td class="table-cell text-cell">{{ vehicle.dailyprice}}€/day</td>
+            <td class="table-cell text-cell"><a href="{{ path('rent_add', {id: vehicle.id}) }}">reserve</a></td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
-
+</div>
 {% endblock %}
